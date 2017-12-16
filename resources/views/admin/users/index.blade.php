@@ -4,7 +4,21 @@
 
 @section('content')
 
-    <a href="{{route('users.create')}}" class="btn btn-info">Nuevo usuario</a>
+  <div class="well-medium">
+    <h1 class="text-center">Usuarios</h1>
+  </div>
+
+
+    <a href="{{route('users.create')}}" class="btn btn-success">Nuevo usuario</a>
+
+<hr>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Usuarios</h3>
+        </div>
+      <div class="panel-body">
+
     <table class="table table-striped">
       <thead>
         <th>ID</th>
@@ -38,4 +52,7 @@
         @endforeach
       </tbody>
     </table>
+
+  </div>
+</div>
 @endsection

@@ -7,18 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     //
+    public $table = "payments";
+
     protected $fillable = [
-        'nivel_id',
-        'alumno_id',
+        'alumno_grupo_id',
         'monto'
     ];
-    public function level()
+
+    public function alumno_grupo()
    {
-     return $this->belongsTo('App\Level','nivel_id','id');
+     return $this->belongsTo('App\Group_Student','alumno_grupo_id','id');
    }
-   public function student()
-  {
-    return $this->belongsTo('App\Student','alumno_id','id');
-  }
 
 }

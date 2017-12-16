@@ -26,4 +26,11 @@ class Group_Student extends Model
   {
   return $this->hasMany('App\Aproved_Level','alumno_grupo_id','id');
   }
+
+  public function niveles_pagados()
+  {
+  return $this->hasMany('App\Payment','alumno_grupo_id','id');
+  }
+
+
 }

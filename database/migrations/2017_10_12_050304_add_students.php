@@ -20,7 +20,7 @@ class AddStudents extends Migration
             $table->integer('numero_control');
             $table->integer('generacion_id')->unsigned();
             $table->integer('carrera_id')->unsigned();
-            $table->integer('promedio')->default(-1);
+            $table->integer('promedio')->default(0);
             $table->boolean('constancia_expedida')->default(false);
 
 

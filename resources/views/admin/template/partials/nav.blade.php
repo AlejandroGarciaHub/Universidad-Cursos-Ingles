@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar blanco navbar-inverse enlace bg-inverse navbar-static-top" style="background-color: #A65161;">
     <div class="container">
         <div class="navbar-header">
 
@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="enlace-titulo navbar-brand" style="font-size:24px!important;" href="{{ url('/') }}">
                 {{-- config('app.name', 'Laravel') --}}
                 Administracion - Ingles
             </a>
@@ -27,7 +27,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a href="{{ route('login') }}">Ingresar</a></li>
+                    <li><a class="enlace" href="{{ route('login') }}">Ingresar</a></li>
 
                   {{--
                     <li><a href="{{ route('register') }}">Registrar</a></li>
@@ -35,7 +35,7 @@
 
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a class="enlace" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->username }} <span class="caret"></span>
                         </a>
 
@@ -67,18 +67,18 @@
             @else
 
               <ul class="nav navbar-nav" id="myTab">
-                <li class="{{ active('users.index') }}"><a href="{{route('users.index')}}">Usuarios <span class="sr-only">(current)</span></a></li>
-                <li class="{{ active('students.index') }}"><a href="{{route('students.index')}}">Alumnos</a></li>
-                <li class="{{ active('aproved_levels.index') }}"><a href="{{route('aproved_levels.index')}}">Calificaciones</a></li>
-                <li class="{{ active('payments.index') }}"><a href="{{route('payments.index')}}">Pagos</a></li>
-                <li class="{{ active('groups.index') }}"><a href="{{route('groups.index')}}">Grupos</a></li>
+                <li class="{{ active('users.index') }}"><a class="enlace" href="{{route('users.index')}}">Usuarios <span class="sr-only">(current)</span></a></li>
+                <li class="{{ active('students.index') }}"><a class="enlace" href="{{route('students.index')}}">Alumnos</a></li>
+                <li class="{{ active('groups.index') }}"><a class="enlace" href="{{route('groups.index')}}">Grupos</a></li>
 
 
 
-                <li class="{{ active('generations.*') }} {{ active('students.search.*') }} dropdown">
-                  <a href="{{route('generations.index')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Generaciones <span class="caret"></span></a>
+                  <li><a class="enlace" href="{{route('students.todos')}}">Generaciones</a></li>
+                  {{--
+                  <li class="{{ active('generations.*') }} {{ active('students.search.*') }} dropdown">
+                    <a href="{{route('generations.index')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Generaciones <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="{{route('students.todos')}}">Todas</a></li>
+
                     <li role="separator" class="divider"></li>
                     @for ($i=0; $i < $countGenerations-1; $i++)
                       @php
@@ -97,8 +97,8 @@
                     @endif
                   </ul>
                 </li>
-                <li class="{{ active('aproved_levels.*') }}"><a href="{{route('aproved_levels.create')}}">Registrar calificacion</a></li>
-                <li class="{{ active('payments.*') }}"><a href="{{route('payments.create')}}">Registrar pago</a></li>
+                --}}
+                <li class="{{ active('groups.create') }}"><a class="enlace" href="{{route('groups.create')}}">Registrar grupo</a></li>
 
 
               </ul>

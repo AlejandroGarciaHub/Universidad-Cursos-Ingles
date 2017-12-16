@@ -3,8 +3,9 @@
 @section('title','Registrar grupo')
 
 @section('content')
+  <h1 class="text-center blanco-fuente">Registro de alumno</h1>
 
-  <div class="panel panel-default">
+  <div class="panel panel-default" style="margin-left:10%; margin-right:10%;">
     <div class="panel-heading">
     <h3 class="panel-title">Registrar alumno en grupo {{$grupo}}</h3>
   </div>

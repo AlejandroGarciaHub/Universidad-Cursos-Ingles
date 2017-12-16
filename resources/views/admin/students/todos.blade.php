@@ -1,22 +1,28 @@
 @extends('layouts.app')
 
-@section('title','Todas las generaciones')
+@section('title','Todos los alumnos')
 
 @section('content')
 
-  <h1 class="text-center">Generaciones  </h1>
+
+  <div class="well-medium">
+    <h1 class="text-center">Generaciones</h1>
+  </div>
+
+{{--
     <div>
       {!!Form::open(['route'=>'students.todos','method'=>'GET','class'=>'form-inline pull-right'])!!}
           {!!Form::text('nombres',null,['class'=>'form-control mr-sm-2','placeholder'=>'Buscar alumno','aria-label'=>'search'])!!}
           {!!Form::submit('Buscar',['class'=>'btn btn-outline-success my-2 my-sm-0y']) !!}
       {!!Form::close()!!}
     </div>
+    --}}
     <br>
     <hr>
 
 
 
-    <ul  class="nav nav-pills">
+    <ul  class="nav nav-pills" style="background-color:white;">
 
       <li class="active">
         <a  href="#todas" data-toggle="tab">Todas</a>

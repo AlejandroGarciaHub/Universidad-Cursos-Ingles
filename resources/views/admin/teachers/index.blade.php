@@ -1,10 +1,21 @@
 @extends('layouts.app')
 
-@section('title','Alumnos')
+@section('title','Teachers')
 
 @section('content')
 
-    <a href="{{route('teachers.create')}}" class="btn btn-info">Añadir teacher</a>
+<div class="well-medium">
+  <h1 class="text-center">Teachers</h1>
+</div>
+
+    <a href="{{route('teachers.create')}}" class="btn btn-success">Añadir teacher</a>
+
+<hr>
+    <div class="panel panel-default" style="margin-left:10%;margin-right:10%;">
+      <div class="panel-heading">
+        <h3 class="panel-title">Teachers</h3>
+    </div>
+  <div class="panel-body">
 
     <table class="table table-striped">
       <thead>
@@ -29,4 +40,7 @@
         @endforeach
       </tbody>
     </table>
+
+  </div>
+</div>
 @endsection

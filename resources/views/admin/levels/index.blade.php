@@ -3,7 +3,20 @@
 @section('title','Niveles')
 
 @section('content')
-  <a href="{{route('levels.create')}}" class="btn btn-info">Nuevo nivel</a>
+
+  <div class="well-medium">
+    <h1 class="text-center">Niveles</h1>
+  </div>
+
+  <a href="{{route('levels.create')}}" class="btn btn-success">Añadir nivel</a>
+  <hr>
+
+  <div class="panel panel-default" style="margin-left:12%;margin-right:12%;">
+    <div class="panel-heading">
+    <h3 class="panel-title">Niveles </h3>
+  </div>
+    <div class="panel-body">
+
   <table class="table table-striped">
     <thead>
       <th>ID</th>
@@ -18,11 +31,14 @@
           <td>{{$level->id}}</td>
           <td>{{$level->descripcion_nivel}}</td>
           @if (Auth::user()->type == 'admin')
-          <td><a href="{{route('levels.edit',$level->id)}}" class="glyphicon glyphicon-pencil" style="color:green; margin-left:3%;margin-right:5%;"></a>
-            <a href="{{route('admin.levels.destroy',$level->id)}}" onclick="return confirm('¿Seguro que deseas eliminar el nivel?')" class="glyphicon glyphicon-remove" style="color:red"></a></td>
+          <td>
+            <a href="{{route('levels.edit',$level->id)}}" class="glyphicon glyphicon-pencil" style="color:green; margin-left:3%;margin-right:5%;"></a>
           @endif
         </tr>
       @endforeach
     </tbody>
   </table>
+
+</div>
+</div>
 @endsection

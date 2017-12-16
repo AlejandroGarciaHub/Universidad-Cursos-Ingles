@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>@yield('title','Default') | Administración</title>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('plugins/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/custom.css')}}">
 
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="fondo">
     <div id="app">
       @include('admin.template.partials.nav')
 

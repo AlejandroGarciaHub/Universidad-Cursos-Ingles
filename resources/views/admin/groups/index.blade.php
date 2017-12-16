@@ -1,19 +1,17 @@
 @extends('layouts.app')
 
-@section('title','Alumnos')
+@section('title','Grupos')
 
 @section('content')
 
-    <a href="{{route('groups.create')}}" class="btn btn-info">Nuevo grupo</a>
+  <div class="well-medium">
+    <h1 class="text-center">Grupos</h1>
+  </div>
 
-    <span class="">
-      {!!Form::open(['route'=>'groups.index','method'=>'GET','class'=>'form-inline pull-right'])!!}
-          {!!Form::text('nombres',null,['class'=>'form-control mr-sm-2','placeholder'=>'Buscar alumno','aria-label'=>'search'])!!}
-          {!!Form::submit('Buscar',['class'=>'btn btn-outline-success my-2 my-sm-0y']) !!}
-      {!!Form::close()!!}
-    </span><hr>
+    <a href="{{route('groups.create')}}" class="btn btn-success">Nuevo grupo</a>
 
-    <ul  class="nav nav-pills">
+<hr>
+    <ul  class="nav nav-pills" style="background-color:white; margin-right:85%;">
 
       <li class="active">
         <a href="#abiertos" data-toggle="tab">Abiertos</a>
@@ -46,11 +44,9 @@
 
             <table class="table table-striped">
               <thead>
-                <th>ID</th>
-                <th>Nivel</th>
                 <th>Profesor</th>
-                <th>Aula</th>
-                <th>Tipo de Curso</th>
+                <th>Horario</th>
+                <th>Nivel</th>
               {{--  <th>Estatus</th>--}}
                 @if (Auth::user()->type == 'admin')
                   <th>Editar | Eliminar</th>
@@ -61,15 +57,16 @@
                     @if ($group->estatus==$stat)
 
                     <tr>
-                      <td>{{$group->id}}</td>
-                      <td>{{$group->nivel->descripcion_nivel}}</td>
                       <td>{{$group->profesor->nombres}} {{$group->profesor->apellidos}}</td>
-                      <td>{{$group->aula}}</td>
-                      @if ($group->tipo_curso=='normal')
+                      <th>{{$group->hora}}</th>
+                      <th>{{$group->nivel->descripcion_nivel}}</th>
+
+{{--                      @if ($group->tipo_curso=='normal')
                         <td>Normal</td>
                       @else
                         <td>Verano</td>
                       @endif
+--}}
                 {{--       <td>{{$group->estatus}}</td>
                      --}}
                       </td>
@@ -78,9 +75,14 @@
                         <a href="{{route('admin.groups.destroy',$group->id)}}" onclick="return confirm('¿Seguro que deseas eliminar el grupo?')" class="glyphicon glyphicon-remove" style="color:red"></a>
                       </td>
                       @endif
-                      <td><button class="btn btn-success" type="button" name="button" onclick="window.location='{{ route("group_students.create")}}/{{$group->id}}'">Registrar alumno</button></td>
-                      <td><button class="btn btn-success" type="button" name="button" onclick="window.location='{{ route("admin.group_students.calificaciones",$group->id)}}'">Ver calificaciones</button></td>
-                      <td><button class="btn btn-success" type="button" name="button" onclick="window.location='{{ route("admin.group_students.pagos",$group->id)}}'">Ver pagos</button></td>
+                      @if ($group->estatus==true)
+                        <td><button class="btn btn-success" type="button" name="button" onclick="window.location='{{ route("group_students.create")}}/{{$group->id}}'">Registrar alumno</button></td>
+                      @endif
+                      <td><button class="btn btn-info" type="button" name="button" onclick="window.location='{{ route("admin.group_students.calificaciones",$group->id)}}'">Ver calificaciones</button></td>
+                      <td><button class="btn btn-warning" type="button" name="button" onclick="window.location='{{ route("admin.group_students.pagos",$group->id)}}'">Ver pagos</button></td>
+                      @if ($group->estatus==true)
+                        <td><button class="btn btn-danger" type="button" name="button" onclick="window.location='{{ route("admin.groups.cerrarGrupo",$group->id)}}'">Cerrar grupo</button></td>
+                      @endif
                     </tr>
                   @endif
                 @endforeach

@@ -17,7 +17,7 @@ class LevelsController extends Controller
     public function index()
     {
         //
-        $levels=Level::orderBy('id','DESC')->paginate(8);
+        $levels=Level::orderBy('id','DESC')->get();
 
         return view('admin.levels.index')->with('levels',$levels);
 

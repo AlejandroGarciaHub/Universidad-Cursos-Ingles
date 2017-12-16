@@ -2,26 +2,11 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+    <h2 id="title" align="center" class="blanco-fuente main-titulo">Administracion de Inglés</h2>
+    <center>
+      <img style="margin-top:5%;" src="{{ URL::asset('imgs/main.gif')}}" width="400px">
+    </center>
+    <h2 id="title" align="center" class="blanco-fuente main-titulo">ITCV</h2>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    @guest
-                      You are NOT  logged in!
-                      @else
-                        You are logged in!
-                    @endguest
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 @endsection

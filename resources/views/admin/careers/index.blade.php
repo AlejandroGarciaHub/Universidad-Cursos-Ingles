@@ -3,15 +3,19 @@
 @section('title','Carreras')
 
 @section('content')
-  <a href="{{route('careers.create')}}" class="btn btn-info">Nueva carrera</a>
+  <div class="well-medium">
+    <h1 class="text-center">Carreras</h1>
+  </div>
 
-  {!!Form::open(['route'=>'careers.index','method'=>'GET','class'=>'navbar-form pull-right'])!!}
-    <div class="input-group">
-      {!!Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Buscar carrera','aria-describedby'=>'search'])!!}
-      <span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search"></span></span>
-    </div>
+  <a href="{{route('careers.create')}}" class="btn btn-success">Añadir carrera</a>
 
-  {!!Form::close()!!}
+  <hr>
+
+  <div class="panel panel-default" style="margin-left:10%; margin-right:10%;">
+    <div class="panel-heading">
+    <h3 class="panel-title">Carreras</h3>
+  </div>
+    <div class="panel-body">
 
   <table class="table table-striped">
     <thead>
@@ -34,4 +38,7 @@
       @endforeach
     </tbody>
   </table>
+
+</div>
+</div>
 @endsection

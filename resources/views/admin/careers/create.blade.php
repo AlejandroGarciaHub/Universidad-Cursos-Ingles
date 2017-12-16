@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
-@section('title','Agregar generación')
+@section('title','Agregar carrera')
 
 @section('content')
-  <div class="panel panel-default">
+
+  <div class="well-medium">
+    <h1 class="text-center">Carreras</h1>
+  </div>
+
+
+  <div class="panel panel-default" style="margin-left:12%;margin-right:12%;">
     <div class="panel-heading">
     <h3 class="panel-title">Agregar carrera</h3>
   </div>

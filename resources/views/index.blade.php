@@ -15,7 +15,7 @@
   <div id="wrap">
   <div id="regbar">
     <div id="navthing" style="align:margin-right;">
-      <h2><a href="#" id="loginform">Ingresar</a></a></h2>
+      <h2><a href="{{ route('login') }}" id="loginfor-m">Ingresar</a></a></h2>
     <div class="login">
       <div class="arrow-up"></div>
       <div class="formholder">
@@ -34,8 +34,6 @@
     </div>
   </div>
 </div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
     <script  src="{{asset('index/js/index.js')}}"></script>
 
 <h2 id="title" align="center">Administracion de ingles</h2>

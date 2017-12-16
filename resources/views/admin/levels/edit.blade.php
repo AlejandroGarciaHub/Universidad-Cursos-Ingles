@@ -3,8 +3,12 @@
 @section('title','Editar nivel')
 
 @section('content')
+  <div class="well-medium">
+    <h1 class="text-center">Niveles</h1>
+  </div>
 
-  <div class="panel panel-default">
+
+  <div class="panel panel-default" style="margin-left:12%;margin-right:12%;">
     <div class="panel-heading">
     <h3 class="panel-title">Editar nivel {{$level->year}}</h3>
   </div>

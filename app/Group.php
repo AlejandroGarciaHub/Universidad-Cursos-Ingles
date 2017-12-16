@@ -11,7 +11,9 @@ class Group extends Model
         'nivel_id',
         'profesor_id',
         'aula',
-        'tipo_curso'
+        'hora',
+        'tipo_curso',
+        'estatus'
     ];
 
     public function profesor()

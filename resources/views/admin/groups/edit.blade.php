@@ -1,30 +1,27 @@
 @extends('layouts.app')
 
-@section('title','Crear grupo')
+@section('title','Editar grupo')
 
 @section('content')
-
   <div class="well-medium">
     <h1 class="text-center">Grupos</h1>
   </div>
 
-
   <div class="panel panel-default" style="margin-left:10%;margin-right:10%;">
     <div class="panel-heading">
-    <h3 class="panel-title">Añadir grupo</h3>
+    <h3 class="panel-title">Editar grupo {{$group->nombre}}</h3>
   </div>
     <div class="panel-body">
-
-      {!! Form::open(['route'=>'groups.store','method'=>'POST'])!!}
+      {!! Form::model($group, ['method' => 'PUT', 'action' => ['GroupsController@update',$group->id]]) !!}
 
       <div class="form-group">
         {!! Form::label('nivel_id','Niveles') !!}
-        {!!Form::select('nivel_id',$levels,null,['class'=>'form-control','style'=>'width:30%;','placeholder'=>'Seleccionar niveles','required'])!!}
+        {!!Form::select('nivel_id',$levels,$group->nivel->id,['class'=>'form-control','style'=>'width:30%;','placeholder'=>'Seleccionar niveles','required'])!!}
       </div>
 
       <div class="form-group">
         {!! Form::label('profesor_id','Teacher') !!}
-        {!!Form::select('profesor_id',$teachers,null,['class'=>'form-control','style'=>'width:30%;','placeholder'=>'Seleccionar teacher','required'])!!}
+        {!!Form::select('profesor_id',$teachers,$group->profesor_id,['class'=>'form-control','style'=>'width:30%;','placeholder'=>'Seleccionar teacher','required'])!!}
       </div>
 
         <div class="form-group">
@@ -42,14 +39,14 @@
           {!! Form::select('tipo_curso',['normal'=>'Normal','verano'=>'Verano'],null,['class'=>'form-control','style'=>'width:30%;','placeholder'=>'Seleccionar tipo de curso','required']) !!}
         </div>
 
-
         <div>
-          {!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
+          {!! Form::submit('Actualizar',['class'=>'btn btn-primary']) !!}
         </div>
 
       {!! Form::close()!!}
 
     </div>
   </div>
+
 
 @endsection

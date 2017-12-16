@@ -17,7 +17,7 @@ class CareersController extends Controller
     public function index(Request $request)
     {
         //
-        $careers=Career::search($request->nombre)->orderBy('id','DESC')->paginate(5);
+        $careers=Career::search($request->nombre)->orderBy('id','DESC')->get();
 
         return view('admin.careers.index')->with('careers',$careers);
     }

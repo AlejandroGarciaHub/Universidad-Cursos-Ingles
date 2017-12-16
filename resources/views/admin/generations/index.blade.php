@@ -3,7 +3,20 @@
 @section('title','Generaciones')
 
 @section('content')
-  <a href="{{route('generations.create')}}" class="btn btn-info">Nueva generación</a>
+
+  <div class="well-medium">
+    <h1 class="text-center">Generaciones</h1>
+  </div>
+
+  <a href="{{route('generations.create')}}" class="btn btn-success">Añadir generación</a>
+  <hr>
+
+  <div class="panel panel-default" style="margin-left:10%; margin-right:15%;">
+    <div class="panel-heading">
+      <h3 class="panel-title">Generaciones</h3>
+  </div>
+<div class="panel-body">
+
   <table class="table table-striped">
     <thead>
       <th>ID</th>
@@ -25,4 +38,7 @@
       @endforeach
     </tbody>
   </table>
+
+</div>
+</div>
 @endsection

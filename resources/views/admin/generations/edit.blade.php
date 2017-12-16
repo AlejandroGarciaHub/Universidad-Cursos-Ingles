@@ -3,8 +3,11 @@
 @section('title','Editar generación')
 
 @section('content')
+  <div class="well-medium">
+    <h1 class="text-center">Generaciones</h1>
+  </div>
 
-  <div class="panel panel-default">
+  <div class="panel panel-default" style="margin-left:15%; margin-right:15%;">
     <div class="panel-heading">
     <h3 class="panel-title">Editar generación {{$generation->year}}</h3>
   </div>

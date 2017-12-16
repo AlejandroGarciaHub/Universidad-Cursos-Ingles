@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
-@section('title','Editar usuario')
+@section('title','Editar alumno')
 
 @section('content')
+
+  <div class="well-medium">
+    <h1 class="text-center">Alumnos</h1>
+  </div>
 
   <div class="panel panel-default">
     <div class="panel-heading">

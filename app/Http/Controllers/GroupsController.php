@@ -77,6 +77,11 @@ class GroupsController extends Controller
     public function edit($id)
     {
         //
+        $group=Group::find($id);
+        $levels=Level::orderBy('descripcion_nivel','ASC')->pluck('descripcion_nivel','id');
+        $teachers = Teacher::select('id', DB::raw("concat(nombres, ' ', apellidos) as nombre_completo"))->pluck('nombre_completo', 'id');
+
+        return view('admin.groups.edit')->with('group',$group)->with('levels',$levels)->with('teachers', $teachers);
     }
 
     /**
@@ -89,6 +94,26 @@ class GroupsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $group= Group::find($id);
+        $group->fill($request->all());
+        $group->save();
+
+        flash('Se ha actualizado el grupo')->success();
+
+        return redirect()->route('groups.index');
+
+    }
+
+    public function cerrarGrupo(Request $request, $id)
+    {
+      $group= Group::find($id);
+      $group->estatus=false;
+      $group->save();
+
+      flash('Se ha actualizado el grupo')->success();
+
+      return redirect()->route('groups.index');
+
     }
 
     /**

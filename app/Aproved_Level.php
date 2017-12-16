@@ -12,7 +12,8 @@ class Aproved_Level extends Model
     protected $fillable = [
         'calif',
         'calif_especial',
-        'alumno_grupo_id'
+        'alumno_grupo_id',
+        'numero_nivel'
     ];
 
     public function alumno_grupo()

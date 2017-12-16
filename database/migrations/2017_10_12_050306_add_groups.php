@@ -16,6 +16,7 @@ class AddGroups extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('aula');
+            $table->string('hora')->nullable();
             $table->string('tipo_curso');
             $table->boolean('estatus')->default(true);
 

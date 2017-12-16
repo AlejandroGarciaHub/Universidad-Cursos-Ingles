@@ -61,6 +61,11 @@ Route::group(['prefix'=>'admin','middleware' => 'auth'],function(){
       'uses'=>'StudentsController@destroy',
       'as'=> 'admin.students.destroy'
     ]);
+    Route::get('students/actualizar/{alumno}', [
+      'uses' => 'StudentsController@actualizar',
+      'as'=> 'admin.students.actualizar'
+    ]);
+
 
     Route::resource('levels','LevelsController');
     Route::get('levels/{id}/destroy',[
@@ -78,6 +83,11 @@ Route::group(['prefix'=>'admin','middleware' => 'auth'],function(){
     Route::get('groups/{id}/destroy',[
       'uses'=>'GroupsController@destroy',
       'as'=> 'admin.groups.destroy'
+    ]);
+
+    Route::get('groups/{id}/cerrarGrupo',[
+      'uses'=>'GroupsController@cerrarGrupo',
+      'as'=> 'admin.groups.cerrarGrupo'
     ]);
 
     Route::resource('group_students','Group_StudentsController');
@@ -100,6 +110,10 @@ Route::group(['prefix'=>'admin','middleware' => 'auth'],function(){
     Route::get('group_students/actualizar/{alumno_grupo}', [
       'uses' => 'Group_StudentsController@actualizar',
       'as'=> 'admin.group_students.actualizar'
+    ]);
+    Route::get('group_students/actualizar_pago/{alumno_grupo}', [
+      'uses' => 'Group_StudentsController@actualizar_pago',
+      'as'=> 'admin.group_students.actualizar_pago'
     ]);
 
     Route::resource('aproved_levels','Aproved_LevelsController');
@@ -129,6 +143,11 @@ Route::get('generations/{year}',[
 Route::get('generations',[
   'uses'=> 'StudentsController@searchGenerationAll',
   'as'=>'students.todos'
+]);
+
+Route::get('students/generateConstancia/{id}',[
+  'uses'=>'StudentsController@generateConstancia',
+  'as'=> 'admin.students.generateConstancia'
 ]);
 
 Auth::routes();

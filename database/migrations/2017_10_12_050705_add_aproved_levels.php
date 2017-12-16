@@ -17,6 +17,8 @@ class AddAprovedLevels extends Migration
             $table->increments('id');
             $table->integer('calif')->default(-1);
             $table->string('calif_especial')->default('-1');
+            $table->integer('numero_nivel')->nullable();
+
 
             $table->integer('alumno_grupo_id')->unsigned();
 

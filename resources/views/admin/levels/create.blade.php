@@ -3,7 +3,13 @@
 @section('title','Agregar nivel')
 
 @section('content')
-  <div class="panel panel-default">
+
+  <div class="well-medium">
+    <h1 class="text-center blanco-fuente">Niveles</h1>
+  </div>
+
+
+  <div class="panel panel-default" style="margin-left:12%;margin-right:12%;">
     <div class="panel-heading">
     <h3 class="panel-title">Agregar Nivel</h3>
   </div>

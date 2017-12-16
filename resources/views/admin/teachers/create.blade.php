@@ -3,7 +3,12 @@
 @section('title','Agregar teacher')
 
 @section('content')
-  <div class="panel panel-default">
+
+  <div class="well-medium">
+    <h1 class="text-center">Teachers</h1>
+  </div>
+
+  <div class="panel panel-default" style="margin-left:13%; margin-right:13%;">
     <div class="panel-heading">
     <h3 class="panel-title">Nuevo teacher</h3>
   </div>
@@ -11,17 +16,17 @@
   {!! Form::open(['route'=>'teachers.store','method'=>'POST'])!!}
   <div class="form-group">
     {!! Form::label('nombres','Nombre(s)') !!}
-    {!! Form::text('nombres',null,['class'=>'form-control','style'=>'width:25%;','placeholder'=>'Ingresar nombre(s) del teacher','required']) !!}
+    {!! Form::text('nombres',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Ingresar nombre(s) del teacher','required']) !!}
   </div>
 
   <div class="form-group">
     {!! Form::label('apellidos','Apellidos') !!}
-    {!! Form::text('apellidos',null,['class'=>'form-control','style'=>'width:25%;','placeholder'=>'Ingresar apellido(s) del teacher','required']) !!}
+    {!! Form::text('apellidos',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Ingresar apellido(s) del teacher','required']) !!}
   </div>
 
   <div class="form-group">
     {!! Form::label('telefono','Telefono') !!}
-    {!! Form::text('telefono',null,['class'=>'form-control','style'=>'width:25%;','placeholder'=>'Numero de telefono']) !!}
+    {!! Form::text('telefono',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Numero de telefono']) !!}
   </div>
 
     <div>

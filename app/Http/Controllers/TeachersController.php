@@ -68,6 +68,8 @@ class TeachersController extends Controller
     public function edit($id)
     {
         //
+        $teacher=Teacher::find($id);
+        return view('admin.teachers.edit')->with('teacher',$teacher);
     }
 
     /**
@@ -80,6 +82,15 @@ class TeachersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $teacher=Teacher::find($id);
+
+        $teacher->fill($request->all());
+
+        $teacher->save();
+
+        flash('El teacher ha sido editado correctamente')->success();
+
+        return redirect()->route('teachers.index');
     }
 
     /**
