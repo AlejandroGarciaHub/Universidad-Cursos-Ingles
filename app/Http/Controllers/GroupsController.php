@@ -7,6 +7,8 @@ use App\Group;
 use App\Level;
 use App\Teacher;
 
+use App\Http\Requests\GroupRequest;
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -46,7 +48,7 @@ class GroupsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GroupRequest $request)
     {
         //
         $group= new Group($request->all());
@@ -91,7 +93,7 @@ class GroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GroupRequest $request, $id)
     {
         //
         $group= Group::find($id);

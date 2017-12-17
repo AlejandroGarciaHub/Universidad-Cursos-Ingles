@@ -82,7 +82,7 @@ class CareersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CareerRequest $request, $id)
     {
         //
         $career=Career::find($id);

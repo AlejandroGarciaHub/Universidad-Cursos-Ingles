@@ -18,17 +18,17 @@
 
         <div class="form-group">
           {!! Form::label('nombres','Nombre(s)') !!}
-          {!! Form::text('nombres',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Ingresar nombre(s) del alumno','required']) !!}
+          {!! Form::text('nombres',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Ingresar nombre(s) del alumno','required', 'pattern'=>'.{3,}', 'title'=>'Minimo 3 caracteres']) !!}
         </div>
 
         <div class="form-group">
           {!! Form::label('apellidos','Apellidos') !!}
-          {!! Form::text('apellidos',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Ingresar apellido(s) del alumno','required']) !!}
+          {!! Form::text('apellidos',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Ingresar apellido(s) del alumno','required', 'pattern'=>'.{3,}', 'title'=>'Minimo 3 caracteres']) !!}
         </div>
 
         <div class="form-group">
           {!! Form::label('numero_control','N° de control') !!}
-          {!!Form::number('numero_control',null,['class'=>'form-control','style'=>'width:30%;','placeholder'=>'N° de control del alumno','required'])!!}
+          {!!Form::text('numero_control',null,['class'=>'form-control','style'=>'width:30%;','placeholder'=>'N° de control del alumno','required', 'pattern'=>'.{8,}', 'title'=>'Ingresa los 8 digitos'])!!}
         </div>
 
         <div class="form-group">

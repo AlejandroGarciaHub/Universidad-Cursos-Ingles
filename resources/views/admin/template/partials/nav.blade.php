@@ -11,9 +11,11 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="enlace-titulo navbar-brand" style="font-size:24px!important;" href="{{ url('/') }}">
+            <a class="enlace-titulo navbar-brand" style="font-size:24px!important;" href="/">
                 {{-- config('app.name', 'Laravel') --}}
-                Administracion - Ingles
+                Administración - Ingles
+                <img style="width:100px; margin-top: -21%; margin-left:-50%;"
+                     src="{{ URL::asset('icons/mstile-150x150.png')}}">
             </a>
         </div>
 
@@ -39,13 +41,13 @@
                             {{ Auth::user()->username }} <span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="{{route('teachers.index')}}">Administrar teachers</a></li>
-                          <li><a href="{{route('generations.index')}}">Administrar generaciones</a></li>
-                          <li><a href="{{route('careers.index')}}">Administrar carreras</a></li>
-                          <li><a href="{{route('levels.index')}}">Administrar niveles</a></li>
+                        <ul class="dropdown-menu" role="menu" style="background-color:#A65161;">
+                          <li><a class="enlace" href="{{route('teachers.index')}}">Administrar teachers</a></li>
+                          <li><a class="enlace" href="{{route('generations.index')}}">Administrar generaciones</a></li>
+                          <li><a class="enlace" href="{{route('careers.index')}}">Administrar carreras</a></li>
+                          <li><a class="enlace" href="{{route('levels.index')}}">Administrar niveles</a></li>
                             <li id="logout">
-                                <a href="{{ route('logout') }}"
+                                <a class="enlace" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                     Salir

@@ -24,7 +24,7 @@
 
     <table class="table table-striped">
       <thead>
-        <th>ID</th>
+        <th hidden="hidden">ID</th>
         <th>Nombre</th>
         <th>N° de control</th>
         <th>Carrera</th>
@@ -45,7 +45,7 @@
       <tbody>
         @foreach ($group_students as $index => $group_student)
           <tr>
-            <td id="id" class="id" value="{{$group_student->id}}">{{$group_student->alumno->id}}</td>
+            <td id="id" hidden="hidden" class="id" value="{{$group_student->id}}">{{$group_student->alumno->id}}</td>
             <td id="nombres" value="{{$group_student->alumno->nombres}}"> {{$group_student->alumno->nombres}} {{$group_student->alumno->apellidos}}</td>
             <input type="hidden" id="apellidos" value="{{$group_student->alumno->apellidos}}"></input>
             <td id="numero_control" value="{{$group_student->alumno->numero_control}}">{{$group_student->alumno->numero_control}}</td>
@@ -116,7 +116,7 @@
               console.log('Es FALSO');
             }
 
-            $(this).parent('td').parent('tr').replaceWith('<tr>  <td id="id" class="id" value="'+id+'">'+id+'</td><td id="nombre_completo"> <div class="form-group row"> <div id="nombres_div" class="col-md-6"> <input id="nombres" class="form-control" placeholder="" type="text" name="nombres" value="'+nombres+'"> </div><div id="apellidos_div" class="col-md-6"> <input id="apellidos" class="form-control" placeholder="" type="text" name="apellidos" value="'+apellidos+'"> </div></div></td><td><input class="form-control" id="numero_control" type="text" name="numero_control" value="'+numero_control+'"></td><td id="carreras"><select class="form-control" id="select_carreras" value="12" class="" name="carreras"> @foreach ($careers as $nombre=>$key) <option id="{{$key}}" value="{{$nombre}}">{{$nombre}}</option>  @endforeach </select></td>@if (sizeof($aproved_levels_array[$index])>0) <td ><input id="calif" class="form-control pull-right" style="width:60%;" type="text" name="calif" value="'+calificacion+'"></td>@else <td><input id="calif" class="form-control pull-right" style="width:60%;" type="text" name="calif" value="'+calificacion+'"></td>@endif @if (sizeof($aproved_levels_array[$index])>1) <td ><input id="calif2" class="form-control pull-right" style="width:60%;" type="text" name="calif2" value="'+calificacion2+'"></td>@else <td><input id="calif2" class="form-control pull-right" style="width:60%;" type="text" name="calif2" value="'+calificacion2+'"></td>@endif <td class="row"> <div class="col-md-6"> <button class="btn btn-success actualizar" type="button" name="button">Guardar</button> </div><div class="col-md-6"> <button class="btn btn-warning cancelar" type="button" name="button">Cancelar</button> </div></td></tr>');
+            $(this).parent('td').parent('tr').replaceWith('<tr>  <td id="id" hidden="hidden" class="id" value="'+id+'">'+id+'</td><td id="nombre_completo"> <div class="form-group row"> <div id="nombres_div" class="col-md-6"> <input id="nombres" class="form-control" placeholder="" type="text" name="nombres" value="'+nombres+'"> </div><div id="apellidos_div" class="col-md-6"> <input id="apellidos" class="form-control" style="width:108%;" placeholder="" type="text" name="apellidos" value="'+apellidos+'"> </div></div></td><td><input class="form-control" id="numero_control" type="text" name="numero_control" value="'+numero_control+'"></td><td id="carreras"><select class="form-control" id="select_carreras" value="12" class="" name="carreras"> @foreach ($careers as $nombre=>$key) <option id="{{$key}}" value="{{$nombre}}">{{$nombre}}</option>  @endforeach </select></td>@if (sizeof($aproved_levels_array[$index])>0) <td ><input id="calif" type="number" required="required" min="0" max="100" class="form-control pull-right" style="width:80%;" name="calif" value="'+calificacion+'"></td>@else <td><input id="calif" type="number" required="required" min="0" max="100" class="form-control pull-right" style="width:80%;" name="calif" value="'+calificacion+'"></td>@endif @if (sizeof($aproved_levels_array[$index])>1) <td ><input id="calif2" type="number" required="required" min="0" max="100" class="form-control pull-right" style="width:80%;" name="calif2" value="'+calificacion2+'"></td>@else <td><input id="calif2" type="number" required="required" min="0" max="100" class="form-control pull-right" style="width:80%;"  name="calif2" value="'+calificacion2+'"></td>@endif <td class="row"> <div class="col-md-6"> <button class="btn btn-success actualizar" type="button" name="button">Guardar</button> </div><div class="col-md-6"> <button class="btn btn-warning cancelar" type="button" name="button">Cancelar</button> </div></td></tr>');
 
 
             $('.id[value='+id+']').parent('tr').find('#select_carreras').find('option[id='+carrera_id+']').attr('selected','selected');
@@ -145,13 +145,17 @@
             console.log(calificacion);
             console.log(calificacion2);
 
-            $(this).parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" value="'+id+'">'+id+'</td><td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td><input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td><input id="carrera_id" type="hidden" value="'+carrera_id+'"></input><td id="carrera" value="'+carrera+'">'+carrera+'</td><td id="calif" value="'+calificacion+'">'+calificacion+'</td> <td id="calif2" value="'+calificacion2+'">'+calificacion2+'</td> @if (Auth::user()->type=='admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="{{route('admin.group_students.destroy',$group_student->id)}}" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td>@endif </tr>');
+            $(this).parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" hidden="hidden" value="'+id+'">'+id+'</td><td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td><input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td><input id="carrera_id" type="hidden" value="'+carrera_id+'"></input><td id="carrera" value="'+carrera+'">'+carrera+'</td><td id="calif" value="'+calificacion+'">'+calificacion+'</td> <td id="calif2" value="'+calificacion2+'">'+calificacion2+'</td> @if (Auth::user()->type=='admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="{{route('admin.group_students.destroy',$group_student->id)}}" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td>@endif </tr>');
           });
 
           $('.actualizar').unbind().click(function(){
 
+            var DOM=$(this).parent('div').parent('td').parent('tr');
+
+            if(DOM.find('#calif2')[0].checkValidity()) {
+            if(DOM.find('#calif')[0].checkValidity()) {
+
             if(confirm('¿Estas seguro que deseas guardar los cambios?')){
-              var DOM=$(this).parent('div').parent('td').parent('tr');
               var token="{{ csrf_token() }}";
 
               var id=DOM.children('#id').attr('value');
@@ -219,7 +223,7 @@
                         console.log(calificacion);
                         console.log(calificacion2);
 
-                        $('.actualizar').parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" value="'+id+'">'+id+'</td><td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td><input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td><input id="carrera_id" type="hidden" value="'+carrera_id+'"></input><td id="carrera" value="'+carrera+'">'+carrera+'</td><td id="calif" value="'+calificacion+'">'+calificacion+'</td> <td id="calif2" value="'+calificacion2+'">'+calificacion2+'</td> @if (Auth::user()->type=='admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="{{route('admin.group_students.destroy',$group_student->id)}}" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td>@endif </tr>');
+                        $('.actualizar').parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" hidden="hidden" value="'+id+'">'+id+'</td><td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td><input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td><input id="carrera_id" type="hidden" value="'+carrera_id+'"></input><td id="carrera" value="'+carrera+'">'+carrera+'</td><td id="calif" value="'+calificacion+'">'+calificacion+'</td> <td id="calif2" value="'+calificacion2+'">'+calificacion2+'</td> @if (Auth::user()->type=='admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="{{route('admin.group_students.destroy',$group_student->id)}}" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td>@endif </tr>');
 
                         $('#13').prepend('<div class="alert alert-success" role="alert">Se han registrado los cambios</div>');
 
@@ -233,6 +237,15 @@
 
                 });
             }
+          }
+          else {
+            alert('La calificacion debe ser entre 0 y 100');
+          }
+        }
+        else {
+          alert('La calificacion debe ser entre 0 y 100');
+        }
+
 
 
           });

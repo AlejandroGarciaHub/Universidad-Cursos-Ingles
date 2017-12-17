@@ -26,7 +26,7 @@
 
   <div class="form-group">
     {!! Form::label('telefono','Telefono') !!}
-    {!! Form::text('telefono',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Numero de telefono']) !!}
+    {!! Form::text('telefono',null,['class'=>'form-control','style'=>'width:35%;','placeholder'=>'Numero de telefono','required']) !!}
   </div>
 
     <div>

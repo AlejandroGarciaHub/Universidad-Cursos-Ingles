@@ -45,7 +45,7 @@ class UsersController extends Controller
         $user->password=bcrypt($request->password);
         $user->save();
 
-        flash("Registrado '" . $user->user . "' de forma correcta!")->success();
+        flash('Registrado ' . $user->username . ' de forma correcta!')->success();
         return redirect()->route('users.index');
     }
 
@@ -80,7 +80,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         //
         $user=User::find($id);
@@ -106,7 +106,7 @@ class UsersController extends Controller
         $user=User::find($id);
         $user->delete();
 
-        flash('El usuario '.$user->user." ha sido eliminado")->error();
+        flash('El usuario '.$user->username." ha sido eliminado")->error();
 
         return redirect()->route('users.index');
     }

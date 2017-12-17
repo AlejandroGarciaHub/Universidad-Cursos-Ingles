@@ -25,7 +25,7 @@
 
     <table class="table table-striped">
       <thead>
-        <th>ID</th>
+        <th hidden="hidden">ID</th>
         <th>Nombre</th>
         <th>N° de control</th>
 
@@ -46,43 +46,43 @@
             $pagado=0;
           @endphp
           <tr>
-            <td id="id" class="id" value="{{$group_student->id}}">{{$group_student->alumno->id}}</td>
+            <td id="id" hidden="hidden" class="id" value="{{$group_student->id}}">{{$group_student->alumno->id}}</td>
             <td id="nombres" value="{{$group_student->alumno->nombres}}"> {{$group_student->alumno->nombres}} {{$group_student->alumno->apellidos}}</td>
             <input type="hidden" id="apellidos" value="{{$group_student->alumno->apellidos}}"></input>
             <td id="numero_control" value="{{$group_student->alumno->numero_control}}">{{$group_student->alumno->numero_control}}</td>
 
             @if (sizeof($pagos_array[$index])>0)
-              <td id="pago1" value="{{$pagos_array[$index][0]->monto}}">{{$pagos_array[$index][0]->monto}}</td>
+              <td id="pago1" value="{{$pagos_array[$index][0]->monto}}">$ {{round($pagos_array[$index][0]->monto)}}</td>
               @php
                 $pagado+=$pagos_array[$index][0]->monto;
               @endphp
             @else
-              <td id="pago1" value="0">0</td>
+              <td id="pago1" value="0">$ 0</td>
             @endif
 
 
 {{-- Nuevos--}}
 
 @if (sizeof($pagos_array[$index])>1)
-  <td id="pago2" value="{{$pagos_array[$index][1]->monto}}">{{$pagos_array[$index][1]->monto}}</td>
+  <td id="pago2" value="{{$pagos_array[$index][1]->monto}}">$ {{round($pagos_array[$index][1]->monto)}}</td>
   @php
     $pagado+=$pagos_array[$index][1]->monto;
   @endphp
 @else
-  <td id="pago2" value="0">0</td>
+  <td id="pago2" value="0">$ 0</td>
 @endif
 
 @if (sizeof($pagos_array[$index])>2)
-  <td id="pago3" value="{{$pagos_array[$index][2]->monto}}">{{$pagos_array[$index][2]->monto}}</td>
+  <td id="pago3" value="{{$pagos_array[$index][2]->monto}}">$ {{round($pagos_array[$index][2]->monto)}}</td>
   @php
     $pagado+=$pagos_array[$index][2]->monto;
   @endphp
 @else
-  <td id="pago3" value="0">0</td>
+  <td id="pago3" value="0">$ 0</td>
 @endif
 
 
-<td id="pagado" value="{{$pagado}}">${{$pagado}}</td>
+<td id="pagado" value="{{$pagado}}">$ {{$pagado}}</td>
 
 {{-- Nuevos--}}
 
@@ -121,6 +121,10 @@
               var pago3=DOM.children('#pago3').attr('value');
               var pagado=DOM.children('#pagado').attr('value');
 
+              pago1=Math.trunc(pago1);
+              pago2=Math.trunc(pago2);
+              pago3=Math.trunc(pago3);
+
               console.log(id);
               console.log(nombres);
               console.log(apellidos);
@@ -132,7 +136,7 @@
               console.log(pagado);
 
 
-              $(this).parent('td').parent('tr').replaceWith('<tr> <td id="id" class="id" value="'+id+'">'+id+'</td> <td id="nombre_completo"> <div class="form-group row"> <div id="nombres_div" class="col-md-6"> <input id="nombres" class="form-control" placeholder="" type="text" name="nombres" value="'+nombres+'"> </div> <div id="apellidos_div" class="col-md-6"> <input id="apellidos" class="form-control" placeholder="" type="text" name="apellidos" value="'+apellidos+'"> </div> </div> </td> <td> <input class="form-control" id="numero_control" type="text" name="numero_control" value="'+numero_control+'"> </td> <td> <input class="form-control" id="pago1" type="text" name="pago1" value="'+pago1+'"> </td> <td> <input class="form-control" id="pago2" type="text" name="pago2" value="'+pago2+'"> </td> <td> <input class="form-control" id="pago3" type="text" name="pago3" value="'+pago3+'"> </td> <td id="pagado" value="'+pagado+'">'+pagado+'</td> <td> <div class=""> <button class="btn btn-success actualizar" type="button" name="button">Guardar </button> </div> <div class=""> <button class="btn btn-warning cancelar" type="button" name="button">Cancelar </button> </div> </td></tr>');
+              $(this).parent('td').parent('tr').replaceWith('<tr> <td id="id" hidden="hidden" class="id" value="'+id+'">'+id+'</td> <td id="nombre_completo"> <div class="form-group row"> <div id="nombres_div" class="col-md-6"> <input id="nombres" class="form-control" placeholder="" type="text" name="nombres" value="'+nombres+'"> </div> <div id="apellidos_div" class="col-md-6"> <input id="apellidos" class="form-control" style="width:108%;" placeholder="" type="text" name="apellidos" value="'+apellidos+'"> </div> </div> </td> <td> <input class="form-control" id="numero_control" type="text" name="numero_control" value="'+numero_control+'"> </td> <td> <input class="form-control" style=width:80%; id="pago1" type="text" name="pago1" value="'+pago1+'"> </td> <td> <input class="form-control" style=width:80%; id="pago2" type="text" name="pago2" value="'+pago2+'"> </td> <td> <input class="form-control" style=width:80%; id="pago3" type="text" name="pago3" value="'+pago3+'"> </td> <td id="pagado" value="'+pagado+'">$ '+pagado+'</td> <td> <div class=""> <button class="btn btn-success actualizar" type="button" name="button">Guardar </button> </div> <div class=""> <button class="btn btn-warning cancelar" type="button" name="button">Cancelar </button> </div> </td></tr>');
 
 
             });
@@ -166,7 +170,7 @@
               console.log(pago3);
               console.log(pagado);
 
-              $(this).parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" class="id" value="'+id+'">'+id+'</td> <td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td> <input type="hidden" id="apellidos" value="'+apellidos+'"> </input> <td id="numero_control" value="'+numero_control+'">'+numero_control+' </td> <td id="pago1" value="'+pago1+'">'+pago1+'</td> <td id="pago2" value="'+pago2+'">'+pago2+'</td> <td id="pago3" value="'+pago3+'">'+pago3+'</td> <td id="pagado" value="'+pagado+'">'+pagado+'</td> @if (Auth::user()->type == 'admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="/admin/students/'+id+'/destroy" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td> @endif</tr>');
+              $(this).parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" hidden="hidden" class="id" value="'+id+'">'+id+'</td> <td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td> <input type="hidden" id="apellidos" value="'+apellidos+'"> </input> <td id="numero_control" value="'+numero_control+'">'+numero_control+' </td> <td id="pago1" value="'+pago1+'">'+pago1+'</td> <td id="pago2" value="'+pago2+'">'+pago2+'</td> <td id="pago3" value="'+pago3+'">'+pago3+'</td> <td id="pagado" value="'+pagado+'">'+pagado+'</td> @if (Auth::user()->type == 'admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="/admin/students/'+id+'/destroy" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td> @endif</tr>');
             });
 
             $('.actualizar').unbind().click(function(){
@@ -190,6 +194,8 @@
               if (pagado=='') {
                 pagado=0;
               }
+
+              pagado=Number(pago1)+Number(pago2)+Number(pago3);
 
 
                 console.log(token);
@@ -247,7 +253,7 @@
 
 
 
-                        $('.actualizar').parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" value="'+id+'">'+id+'</td> <td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td> <input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td> <td id="pago1" value="'+pago1+'">'+pago1+'</td> <td id="pago2" value="'+pago2+'">'+pago2+'</td> <td id="pago3" value="'+pago3+'">'+pago3+'</td> <td id="pagado" value="'+pagado+'">'+pagado+'</td> @if (Auth::user()->type=='admin') <td> <a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="/admin/group_students/'+id+'/destroy" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td> @endif </tr>');
+                        $('.actualizar').parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" hidden="hidden" value="'+id+'">'+id+'</td> <td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td> <input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td> <td id="pago1" value="'+pago1+'">$ '+pago1+'</td> <td id="pago2" value="'+pago2+'">$ '+pago2+'</td> <td id="pago3" value="'+pago3+'">$ '+pago3+'</td> <td id="pagado" value="'+pagado+'">$ '+pagado+'</td> @if (Auth::user()->type=='admin') <td> <a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="/admin/group_students/'+id+'/destroy" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td> @endif </tr>');
 
 
                       },

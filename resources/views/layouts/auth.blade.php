@@ -6,7 +6,13 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('plugins/bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/custom.css')}}">
 
-
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ URL::asset('icons/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ URL::asset('icons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ URL::asset('icons/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{ URL::asset('icons/manifest.json')}}">
+    <link rel="mask-icon" href="{{ URL::asset('icons/safari-pinned-tab.svg')}}" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>

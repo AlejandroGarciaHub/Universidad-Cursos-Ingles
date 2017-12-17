@@ -39,7 +39,7 @@ return $this->hasMany('App\Group_Student','alumno_id','id');
 
 
 public function scopeSearch($query,$nombres){
-  return $query->where('nombres','LIKE',"%$nombres%");
+  return $query->where('nombres','LIKE',"%$nombres%")->orWhere('apellidos','LIKE',"%$nombres%")->orWhere('numero_control','LIKE',"%$nombres%");
 }
 
 }

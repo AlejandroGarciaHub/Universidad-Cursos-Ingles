@@ -51,6 +51,7 @@ p.p_inline2 {
 a.enlace {
   color: white!important;
   font-size: 16px;
+  border-radius: 12px;
 }
 a:hover.enlace {
   background-color: #540032!important;
@@ -59,6 +60,8 @@ a:hover.enlace {
 }
 a.enlace-titulo {
   color: white!important;
+  background-color: #E65161!important;
+  border-radius: 12px;
 }
 a:hover.enlace-titulo {
   background-color: #540032!important;

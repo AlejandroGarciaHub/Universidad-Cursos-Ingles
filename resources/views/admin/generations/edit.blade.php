@@ -14,10 +14,10 @@
     <div class="panel-body">
       {!! Form::model($generation, ['method' => 'PUT', 'action' => ['GenerationsController@update',$generation->id]]) !!}
 
-        <div class="form-group">
-          {!! Form::label('year','Año') !!}
-          {!! Form::text('year',null,['class'=>'form-control','placeholder'=>'Año de la generación','required']) !!}
-        </div>
+      <div class="form-group">
+        {!!Form::label('year','Año')!!}
+        {!!Form::number('year',null,['class'=>'form-control','style'=>'width:20%;','placeholder'=>'Año de la generación','required'])!!}
+      </div>
 
         <div>
           {!! Form::submit('Actualizar',['class'=>'btn btn-primary']) !!}

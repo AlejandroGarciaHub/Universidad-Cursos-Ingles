@@ -28,12 +28,12 @@
 
         <div class="form-group">
           {!! Form::label('password','Contraseña') !!}
-          {!! Form::password('password',['class'=>'form-control','required']) !!}
+          {!! Form::password('password',['class'=>'form-control','required', 'pattern'=>'.{6,}', 'title'=>'6 caracteres minimo']) !!}
         </div>
 
         <div class="form-group">
           {!! Form::label('type','Tipo') !!}
-          {!! Form::select('type',['member'=>'Miembro','admin'=>'Administrador'],null,['placeholder'=>'Selecciona un nivel','class'=>'form-control']) !!}
+          {!! Form::select('type',['member'=>'Miembro','admin'=>'Administrador'],null,['placeholder'=>'Selecciona un nivel','class'=>'form-control','required']) !!}
         </div>
 
         <div>

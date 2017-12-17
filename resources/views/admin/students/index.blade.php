@@ -26,7 +26,7 @@
 
     <table class="table table-striped">
       <thead>
-        <th>ID</th>
+        <th hidden="hidden">ID</th>
         <th>Nombre</th>
         <th>N° de control</th>
 {{--
@@ -50,7 +50,7 @@
       <tbody>
         @foreach ($students as $index => $student)
           <tr>
-            <td id="id" class="id" value="{{$student->id}}">{{$student->id}}</td>
+            <td id="id" hidden="hidden" class="id" value="{{$student->id}}">{{$student->id}}</td>
             <td id="nombres" value="{{$student->nombres}}">{{$student->nombres}} {{$student->apellidos}}</td>
             <input type="hidden" id="apellidos" value="{{$student->apellidos}}"></input>
             <td id="numero_control" value="{{$student->numero_control}}">{{$student->numero_control}}</td>
@@ -91,14 +91,14 @@
                    $promedio=$numerador/$denominador;
                    $promedio=round($promedio);
                  @endphp
-                 <td id="promedio" value="{{$promedio}}">{{$promedio}}</td>
+                 <td id="promedio" value="{{$promedio}}"><button class="btn btn-primary" type="button" name="button">{{$promedio}}</button></td>
                  @else
-                   <td id="promedio" value="0">0</td>
+                   <td id="promedio" value="0"><button class="btn btn-primary" type="button" name="button">0</button></td>
                @endif
 
       {{--     <td>{{$student->nivel}}</td>--}}
             @if (Auth::user()->type == 'admin')
-            <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a>
+            <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:13%;margin-right:22%;"></a>
               <a href="{{route('admin.students.destroy',$student->id)}}" onclick="return confirm('¿Seguro que deseas eliminar el usuario?')" class="glyphicon glyphicon-remove" style="color:red"></a>
             </td>
             @endif
@@ -156,7 +156,7 @@
             var elementoPromedio='';
 
             if (calif1==0) {
-              elementCalif1='<td id="calif5" value="'+calif1+'">'+calif1+'</td>';
+              elementCalif1='<td id="calif1" value="'+calif1+'">'+calif1+'</td>';
             }
             else {
               elementCalif1='<td> <input class="form-control" id="calif1" type="text" name="calif1" value="'+calif1+'"> </td>';
@@ -232,17 +232,11 @@
             console.log(promedio);
 
 
-            $(this).parent('td').parent('tr').replaceWith(' <tr> <td id="id" class="id" value="'+id+'">'+id+'</td> <td id="nombre_completo"> <div class="form-group row"> <div id="nombres_div" class="col-md-6" style="width:150px;"> <input id="nombres" class="form-control" placeholder="" type="text" name="nombres" value="'+nombres+'"> </div> <div id="apellidos_div" class="col-md-6" style="width:150px;"> <input id="apellidos" class="form-control" placeholder="" type="text" name="apellidos" value="'+apellidos+'"> </div> </div> </td> <td> <input style="width:110px;" class="form-control" id="numero_control" type="text" name="numero_control" value="'+numero_control+'"> </td> '+outputElements+' <td id="promedio" value="'+promedio+'">'+promedio+'</td> <td> <div class=""> <button class="btn btn-success actualizar" type="button" name="button">Guardar</button> </div><div class=""> <button class="btn btn-warning cancelar" type="button" name="button">Cancelar</button> </div></td> </tr>');
+            $(this).parent('td').parent('tr').replaceWith(' <tr> <td id="id" hidden="hidden" class="id" value="'+id+'">'+id+'</td> <td id="nombre_completo"> <div class="form-group row"> <div id="nombres_div" class="col-md-6" style="width:150px;"> <input id="nombres" class="form-control" placeholder="" type="text" name="nombres" value="'+nombres+'"> </div> <div id="apellidos_div" class="col-md-6" style="width:150px;"> <input id="apellidos" class="form-control" placeholder="" type="text" name="apellidos" value="'+apellidos+'"> </div> </div> </td> <td> <input style="width:110px;" class="form-control" id="numero_control" type="text" name="numero_control" value="'+numero_control+'"> </td> '+outputElements+' <td id="promedio" value="'+promedio+'"><button class="btn btn-primary" type="button" name="button">'+promedio+'</button></td> <td> <div class=""> <button class="btn btn-success actualizar" type="button" name="button">Guardar</button> </div><div class=""> <button class="btn btn-warning cancelar" type="button" name="button">Cancelar</button> </div></td> </tr>');
 
 
 
           });
-
-            $('.generar').unbind().click(function(){
-              var DOM=$(this).parent('div').parent('td').parent('tr');
-
-              var id=DOM.children('#id').attr('value');
-            });
 
           $('.cancelar').unbind().click(function(){
 
@@ -291,7 +285,7 @@
             console.log(promedio);
             console.log(constancia);
 
-            $(this).parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" class="id" value="'+id+'">'+id+'</td> <td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td> <input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td><td id="calif1" value="'+calif1+'">'+calif1+'</td><td id="calif2" value="'+calif2+'">'+calif2+'</td><td id="calif3" value="'+calif3+'">'+calif3+'</td><td id="calif4" value="'+calif4+'">'+calif4+'</td><td id="calif5" value="'+calif5+'">'+calif5+'</td><td id="calif6" value="'+calif6+'">'+calif6+'</td><td id="calif7" value="'+calif7+'">'+calif7+'</td><td id="calif8" value="'+calif8+'">'+calif8+'</td><td id="promedio" value="'+promedio+'">'+promedio+'</td> @if (Auth::user()->type == 'admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="/admin/students/'+id+'/destroy" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td> @endif '+elementConstancia+' </tr>');
+            $(this).parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" hidden="hidden" class="id" value="'+id+'">'+id+'</td> <td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td> <input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td><td id="calif1" value="'+calif1+'">'+calif1+'</td><td id="calif2" value="'+calif2+'">'+calif2+'</td><td id="calif3" value="'+calif3+'">'+calif3+'</td><td id="calif4" value="'+calif4+'">'+calif4+'</td><td id="calif5" value="'+calif5+'">'+calif5+'</td><td id="calif6" value="'+calif6+'">'+calif6+'</td><td id="calif7" value="'+calif7+'">'+calif7+'</td><td id="calif8" value="'+calif8+'">'+calif8+'</td><td id="promedio" value="'+promedio+'"><button class="btn btn-primary" type="button" name="button">'+promedio+'</button></td> @if (Auth::user()->type == 'admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:13%;margin-right:22%;"></a> <a href="/admin/students/'+id+'/destroy" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td> @endif '+elementConstancia+' </tr>');
           });
 
           $('.actualizar').unbind().click(function(){
@@ -317,6 +311,36 @@
               var promedio=DOM.find('#promedio').attr('value');
               var constancia=DOM.find('#constancia').attr('value');
 
+              var denominador=0;
+              if (calif1!='') {
+                denominador++;
+              }
+              if (calif2!='') {
+                denominador++;
+              }
+              if (calif3!='') {
+                denominador++;
+              }
+              if (calif4!='') {
+                denominador++;
+              }
+              if (calif5!='') {
+                denominador++;
+              }
+              if (calif6!='') {
+                denominador++;
+              }
+              if (calif7!='') {
+                denominador++;
+              }
+              if (calif8!='') {
+                denominador++;
+              }
+
+              promedio=(Number(calif1)+Number(calif2)+Number(calif3)+Number(calif4)+Number(calif5)+Number(calif6)+Number(calif7)+Number(calif8))/denominador;
+              promedio=promedio||0;
+
+              promedio=Math.round(promedio);
 
               console.log(token);
               console.log(id);
@@ -373,7 +397,6 @@
                         var calif6=data.calif6;
                         var calif7=data.calif7;
                         var calif8=data.calif8;
-                        var promedio=data.promedio;
                         var constancia=data.constancia;
 
                         if (calif1==null) {
@@ -425,9 +448,10 @@
                         console.log(calif7);
                         console.log(calif8);
                         console.log(promedio);
+                        console.log(denominador);
 
 
-                      $('.actualizar').parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" class="id" value="'+id+'">'+id+'</td> <td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td> <input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td><td id="calif1" value="'+calif1+'">'+calif1+'</td><td id="calif2" value="'+calif2+'">'+calif2+'</td><td id="calif3" value="'+calif3+'">'+calif3+'</td><td id="calif4" value="'+calif4+'">'+calif4+'</td><td id="calif5" value="'+calif5+'">'+calif5+'</td><td id="calif6" value="'+calif6+'">'+calif6+'</td><td id="calif7" value="'+calif7+'">'+calif7+'</td><td id="calif8" value="'+calif8+'">'+calif8+'</td><td id="promedio" value="'+promedio+'">'+promedio+'</td> @if (Auth::user()->type == 'admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:3%;margin-right:5%;"></a> <a href="/admin/students/'+id+'/destroy" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td> @endif '+elementConstancia+' </tr>');
+                      $('.actualizar').parent('div').parent('td').parent('tr').replaceWith('<tr> <td id="id" hidden="hidden" class="id" value="'+id+'">'+id+'</td> <td id="nombres" value="'+nombres+'">'+nombres+' '+apellidos+'</td> <input type="hidden" id="apellidos" value="'+apellidos+'"></input> <td id="numero_control" value="'+numero_control+'">'+numero_control+'</td><td id="calif1" value="'+calif1+'">'+calif1+'</td><td id="calif2" value="'+calif2+'">'+calif2+'</td><td id="calif3" value="'+calif3+'">'+calif3+'</td><td id="calif4" value="'+calif4+'">'+calif4+'</td><td id="calif5" value="'+calif5+'">'+calif5+'</td><td id="calif6" value="'+calif6+'">'+calif6+'</td><td id="calif7" value="'+calif7+'">'+calif7+'</td><td id="calif8" value="'+calif8+'">'+calif8+'</td><td id="promedio" value="'+promedio+'"><button class="btn btn-primary" type="submit" name="button">'+promedio+'</button></td> @if (Auth::user()->type == 'admin') <td><a href="#" class="glyphicon glyphicon-pencil editar" style="color:green ; margin-left:13%;margin-right:22%;"></a> <a href="/admin/students/'+id+'/destroy" onclick="return confirm("¿Seguro que deseas eliminar el usuario?")" class="glyphicon glyphicon-remove" style="color:red"></a> </td> @endif '+elementConstancia+' </tr>');
 
 
                     },

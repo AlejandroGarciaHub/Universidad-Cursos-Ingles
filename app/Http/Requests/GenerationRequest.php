@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Generation;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class GenerationRequest extends FormRequest
@@ -23,9 +25,31 @@ class GenerationRequest extends FormRequest
      */
     public function rules()
     {
+
+      $generation = Generation::find($this->generation);
+
+      if (isset($generation)) {
+        # code...
         return [
             //
-            'year'=>'min:1995|max:2099|required|unique:generations|digits:4'
-        ];
+            'year'=>[
+              'required',
+              'digits:4',
+              'unique:generations,year,'.$generation->id,
+            ],
+          ];
+      }
+      else{
+        return [
+            //
+            'year'=>[
+              'required',
+              'digits:4',
+              'unique:generations,year',
+            ],
+          ];
+      }
+
+
     }
 }

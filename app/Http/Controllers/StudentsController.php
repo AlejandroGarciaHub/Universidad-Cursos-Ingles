@@ -128,7 +128,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StudentRequest $request, $id)
     {
         //
         $student=Student::find($id);
@@ -143,7 +143,7 @@ class StudentsController extends Controller
         return redirect()->route('students.index');
     }
 
-    public function actualizar(Request $request, $id)
+    public function actualizar(StudentRequest $request, $id)
     {
 
 
@@ -323,7 +323,10 @@ class StudentsController extends Controller
             $denominador++;
           }
         }
-        $promedio=$numerador/$denominador;
+        if ($denominador!=0) {
+          # code...
+          $promedio=$numerador/$denominador;
+        }
         $student->promedio=$promedio;
         $student->save();
 

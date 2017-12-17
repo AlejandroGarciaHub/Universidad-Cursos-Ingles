@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Student;
 
 class StudentRequest extends FormRequest
 {
@@ -23,13 +24,28 @@ class StudentRequest extends FormRequest
      */
     public function rules()
     {
+
+      $student = Student::find($this->student);
+
+      if (isset($student)) {
         return [
             //
-            'nombres'=>'required|string|min:4|max:20|',
-            'apellidos'=>'required|string|min:4|max:20|',
-            'numero_control'=>'required|unique:students|digits:8',
+            'nombres'=>'required|string|min:3|max:20|',
+            'apellidos'=>'required|string|min:3|max:20|',
+            'numero_control'=>'required|digits:8|unique:students,numero_control,'.$student->id,
             'generacion_id'=>'required',
             'carrera_id'=>'required'
         ];
+      }
+      else{
+        return [
+            //
+            'nombres'=>'required|string|min:3|max:20|',
+            'apellidos'=>'required|string|min:3|max:20|',
+//            'numero_control'=>'required|digits:8|unique:students,numero_control,'.$student->id,
+        ];
+      }
+
+
     }
 }

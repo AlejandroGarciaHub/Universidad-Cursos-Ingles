@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Career;
 
-class CareerRequest extends FormRequest
+class GroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,23 +24,13 @@ class CareerRequest extends FormRequest
     public function rules()
     {
 
-
-      $career = Career::find($this->career);
-
-      if (isset($career)) {
         return [
             //
-            'nombre'=>'min:10|max:50|required|string|unique:careers,nombre,'.$career->id,
-
+            'aula'=>'required|string|min:1|max:20|',
+            'hora'=>'required',
+            'nivel_id'=>'required',
+            'profesor_id'=>'required'
         ];
-      }
-      else{
-        return [
-            //
-            'nombre'=>'min:10|max:50|required|string|unique:careers,nombre',
-
-        ];
-      }
 
     }
 }

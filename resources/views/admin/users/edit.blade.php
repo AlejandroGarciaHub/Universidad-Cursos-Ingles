@@ -31,9 +31,10 @@
           {!! Form::password('password',['class'=>'form-control','required']) !!}
         </div>
 --}}
+
         <div class="form-group">
           {!! Form::label('type','Tipo') !!}
-          {!! Form::select('type',['member'=>'Miembro','admin'=>'Administrador'],null,['placeholder'=>'Selecciona un nivel','class'=>'form-control']) !!}
+          {!! Form::select('type',['member'=>'Miembro','admin'=>'Administrador'],null,['placeholder'=>'Selecciona un nivel','class'=>'form-control','required']) !!}
         </div>
 
         <div>
